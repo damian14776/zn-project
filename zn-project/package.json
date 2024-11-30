@@ -39,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@rspack/cli": "^1.1.4",
+    "@rspack/core": "^1.1.4"
   }
 }
