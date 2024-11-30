@@ -8,18 +8,31 @@ module.exports = {
     },
     module: {
         rules: [
+            {
+                test: /\.(ts|tsx)$/,
+                exclude: [/node_modules/],
+                loader: 'builtin:swc-loader',
+                options: {
+                    jsc: {
+                        parser: {
+                            syntax: 'typescript',
+                        },
+                    },
+                },
+                type: 'javascript/auto',
+            },
         {
-            test: /\.(ts|tsx)$/,
-            use: 'ts-loader',
-            exclude: /node_modules/,
-        },
-        {
-            test: /\.css$/,
+            test: /\.css$/i,
             use: ['style-loader', 'css-loader'],
+            type: 'javascript/auto',
         },
+            {
+                test: /\.svg$/, // Match SVG files
+                type: 'asset', // Use Rspack's asset module
+            },
     ],
 },
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
-    }
+    },
 }
