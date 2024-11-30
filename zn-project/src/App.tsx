@@ -8,7 +8,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo"/>
         <div className="bg-red-500 text-white p-4">
-          <h1 className="text-2xl">Hello, Tailwind CSS!</h1>
+          <h1 className="text-2xl">Hello, Tailwind CSS! This is working on github pages</h1>
         </div>
         <p>
           Edit <code>src/App.tsx</code> and save to reload.
