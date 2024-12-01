@@ -1,46 +1,105 @@
-# Getting Started with Create React App
+Sure! Here’s a comprehensive `README.md` file based on everything you've provided so far:
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+# Zn Project - Take-home Assignment
 
-In the project directory, you can run:
+This project is a simple web application built to meet the requirements of a take-home assignment. The app is built using React and follows the specified tech stack. It allows users to view posts, filter them by user, and navigate through pagination.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **Post Display**: View a list of posts with titles, bodies, and user information.
+- **User Filter**: Filter posts by users. This functionality is available via a dropdown on mobile devices.
+- **Pagination**: Posts are paginated, and users can navigate between pages.
+- **Responsive Design**: The app adapts seamlessly to both desktop and mobile views.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tech Stack
 
-### `npm test`
+- **Frontend**: React.js, Tailwind CSS
+- **Bundler**: rspack (for fast build and performance)
+- **State Management**: React’s useState and useEffect hooks
+- **API Calls**: Fetching data from external services (posts, users, photos)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Setup & Run Locally
 
-### `npm run build`
+To run the project locally, follow these steps:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1. Clone the repository
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+git clone https://github.com/damian14776/zn-project.git
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 2. Navigate to the project directory
 
-### `npm run eject`
+```bash
+cd zn-project
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### 3. Install dependencies
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Run the following command to install the required dependencies:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```bash
+npm install
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 4. Start the development server
 
-## Learn More
+After the dependencies are installed, start the development server with the following command:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```bash
+npm start
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+This will start the app on `http://localhost:3000`.
+
+## Deployed Site
+
+You can view the live version of the project here (clear your cache if needed):
+
+[Zn Project Live](https://damian14776.github.io/zn-project/)
+
+## How to Use
+
+1. **Viewing Posts**: The posts will be displayed with their title, body, and user information.
+2. **Filtering Posts**: On mobile, you can filter posts by users by clicking the "Filter Posts" button. A dropdown will appear with the list of users. Select a user to filter posts.
+3. **Pagination**: You can navigate through the posts using the "Previous" and "Next" buttons located below the posts.
+
+## Project Structure
+
+Here’s a quick overview of the project structure:
+
+```
+zn-project/
+├── public/
+│   ├── index.html         # Main HTML file
+├── src/
+│   ├── components/
+│   │   ├── FilterColumn.tsx  # Filter component for user selection
+│   │   ├── PostDisplay.tsx   # Post display component
+│   ├── services/
+│   │   ├── app.ts          # Services for fetching posts, users, and photos
+│   ├── App.tsx             # Main App component
+├── package.json            # NPM configuration
+├── tailwind.config.js      # Tailwind CSS configuration
+├── tsconfig.json           # TypeScript configuration
+├── README.md               # Project README
+```
+
+## Dependencies
+
+- **React**: A JavaScript library for building user interfaces.
+- **Tailwind CSS**: A utility-first CSS framework for creating modern and responsive layouts.
+- **rspack**: A fast bundler for JavaScript and TypeScript projects.
+- **Biome**: A next-generation code linter and formatter that enhances developer productivity by providing a unified configuration for linting, formatting, and type-checking.
+
+## Known Issues
+
+- None at the moment. Please reach out if you encounter any bugs or issues!
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
