@@ -21,3 +21,12 @@ export const fetchPhotos = async () => {
         throw new Error('Failed to get Images');
     }
 }
+
+export const fetchUsers = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/users`);
+        return response.data;
+    } catch (err) {
+        throw new Error('Failed to get Images');
+    }
+}

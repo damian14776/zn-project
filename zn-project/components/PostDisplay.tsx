@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { fetchPosts, fetchPhotos } from '../services/app'; // Import all API functions
+import { fetchPosts, fetchPhotos, fetchUsers } from '../services/app'; // Import all API functions
 
 interface Post {
     id: number;
@@ -8,14 +8,30 @@ interface Post {
     image?: string;
 }
 
-interface Photo {
+interface User {
     id: number;
-    url: string;
+    name: string;
+    username: string;
+    email: string;
+    address: {
+        street: string;
+        suite: string;
+        city: string;
+        zipcode: string;
+    };
+    phone: string;
+    website: string;
+    company: {
+        name: string;
+        catchPhrase: string;
+        bs: string;
+    };
 }
 
 const PostList: React.FC = () => {
     const [posts, setPosts] = useState<Post[]>([]); // Posts with combined data
     const [photos, setPhotos] = useState();
+    const [users, setUsers] = useState();
     const [loading, setLoading] = useState<boolean>(true); // Loading state
     const [error, setError] = useState<string | null>(null); // Error state
 
@@ -23,17 +39,21 @@ const PostList: React.FC = () => {
         const getData = async () => {
             setLoading(true);
             try {
-                const [fetchedPosts, fetchedPhotos] = await Promise.all([
+                const [fetchedPosts, fetchedPhotos, fetchedUsers] = await Promise.all([
                     fetchPosts(),
                     fetchPhotos(),
+                    fetchUsers(),
                 ]);
 
-                const combinedPosts = fetchedPosts.slice(0,10).map((post, index) => ({
+                const combinedPosts = fetchedPosts.slice(0,10).map((post: Post, index: number) => ({
                     ...post,
                     image: fetchedPhotos[index]?.url,
+                    user: fetchedUsers.find((user: User) => user.id === post.userId),
                 }));
 
                 setPosts(combinedPosts);
+                setUsers(fetchedUsers);
+                setPhotos(fetchedPhotos);
             } catch (error) {
                 console.error('Error fetching posts:', error); // Log if there's an error
                 setError('Failed to load posts');
@@ -61,6 +81,16 @@ const PostList: React.FC = () => {
 
                             {/* Post Description */}
                             <p>{post.body}</p>
+
+                            {post.user && (
+                                <div>
+                                    <h4>User Info</h4>
+                                    <p>Name: {post.user.name}</p>
+                                    <p>Email: {post.user.email}</p>
+                                    <p>Phone: {post.user.phone}</p>
+                                    <p>Website: {post.user.website}</p>
+                                </div>
+                            )}
                         </div>
                     </li>
                 ))}
