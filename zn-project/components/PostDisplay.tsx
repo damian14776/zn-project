@@ -36,8 +36,8 @@ interface Photo {
 }
 
 interface PostDisplayProps {
-    searchQuery: string; // Receive searchQuery
-    selectedUserId: string; // Receive the selected user ID
+    searchQuery: string;
+    selectedUserId: string;
 }
 
 const PostDisplay: React.FC<PostDisplayProps> = ({ searchQuery, selectedUserId }) => {
@@ -99,7 +99,6 @@ const PostDisplay: React.FC<PostDisplayProps> = ({ searchQuery, selectedUserId }
         }
 
         setFilteredPosts(filtered);
-
     }, [searchQuery, selectedUserId, posts]); // Re-run the filter if changed
 
     // Pagination calculations
@@ -125,11 +124,9 @@ const PostDisplay: React.FC<PostDisplayProps> = ({ searchQuery, selectedUserId }
                     <ul className="space-y-6">
                         {currentPosts.map((post) => (  // Use currentPosts for pagination
                             <li key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl">
-                                <div className="flex items-center space-x-6 p-4">
-                                    {post.image && (
-                                        <img src={post.image} alt={post.title} className="w-48 h-48 object-cover object-center rounded-lg" />
-                                    )}
-                                    <div className="flex-1">
+                                <div className="flex flex-col sm:flex-row sm:space-x-6 space-y-4 sm:space-y-0 p-4">
+                                    {/* Post content: Text first on mobile */}
+                                    <div className="flex-1 text-center sm:text-left">
                                         <h3 className="text-2xl font-semibold text-gray-800 mb-2">{post.title}</h3>
                                         <p className="text-gray-600 mb-4">{post.body}</p>
                                         {post.user && (
@@ -142,11 +139,20 @@ const PostDisplay: React.FC<PostDisplayProps> = ({ searchQuery, selectedUserId }
                                             </div>
                                         )}
                                     </div>
+
+                                    {/* Image: Full width on mobile, left aligned on desktop */}
+                                    {post.image && (
+                                        <img
+                                            src={post.image}
+                                            alt={post.title}
+                                            className="w-full sm:w-48 sm:h-48 sm:mr-4 object-cover object-center rounded-lg mt-4 sm:mt-0 mx-auto sm:mx-0"
+                                        />
+                                    )}
                                 </div>
                             </li>
                         ))}
                     </ul>
-
+                    
                     <div className="flex justify-between items-center m-6">
                         <button
                             onClick={prevPage}
