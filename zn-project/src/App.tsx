@@ -5,14 +5,18 @@ import PostDisplay from "../components/PostDisplay";
 import SearchBar from '../components/SearchBar';
 import FilterColumn from "../components/FilterColumn";
 import Header from "../components/Header";
-import { fetchPosts, fetchPhotos, fetchUsers } from '../services/app'; // Import all API functions
 
 function App() {
 
     const [searchQuery, setSearchQuery] = useState('');
+    const [selectedUserId, setSelectedUserId] = useState<string>('');
 
     const handleSearchChange = (query: string) => {
         setSearchQuery(query);
+    };
+
+    const handleFilterChange = (userId: string) => {
+        setSelectedUserId(userId);
     };
 
     return (
@@ -26,12 +30,12 @@ function App() {
           <div className="container mx-auto  flex">
               {/* Left Section: SearchBar */}
               <div className="flex-1 mr-6">
-                  <PostDisplay searchQuery={searchQuery} />
+                  <PostDisplay searchQuery={searchQuery}  selectedUserId={selectedUserId} />
               </div>
 
               {/* Right Section: FilterColumn */}
               <div className="w-1/4">
-                  <FilterColumn />
+                  <FilterColumn onFilter={handleFilterChange}/>
               </div>
           </div>
       </div>
