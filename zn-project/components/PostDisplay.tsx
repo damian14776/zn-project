@@ -67,36 +67,41 @@ const PostList: React.FC = () => {
 
 
     return (
-        <div>
-            <ul>
+        <div className="container mx-auto p-6">
+            <ul className="space-y-6">
                 {posts.map((post) => (
-                    <li key={post.id}>
-                        {/* Image Section */}
-                        <img src={post.image} alt={post.title}/>
-
-                        {/* Content Section */}
-                        <div>
-                            {/* Post Title */}
-                            <h3>{post.title}</h3>
-
-                            {/* Post Description */}
-                            <p>{post.body}</p>
-
-                            {post.user && (
-                                <div>
-                                    <h4>User Info</h4>
-                                    <p>Name: {post.user.name}</p>
-                                    <p>Email: {post.user.email}</p>
-                                    <p>Phone: {post.user.phone}</p>
-                                    <p>Website: {post.user.website}</p>
-                                </div>
+                    <li
+                        key={post.id}
+                        className="bg-white rounded-lg shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl"
+                    >
+                        <div className="flex items-center space-x-6 p-4">
+                            {post.image && (
+                                <img
+                                    src={post.image}
+                                    alt={post.title}
+                                    className="w-48 h-48 object-cover object-center rounded-lg"
+                                />
                             )}
+
+                            <div className="flex-1">
+                                <h3 className="text-2xl font-semibold text-gray-800 mb-2">{post.title}</h3>
+                                <p className="text-gray-600 mb-4">{post.body}</p>
+
+                                {post.user && (
+                                    <div className="bg-gray-100 p-4 rounded-lg mt-4">
+                                        <h4 className="font-medium text-gray-800 mb-2">User Info</h4>
+                                        <p className="text-gray-600">Name: {post.user.name}</p>
+                                        <p className="text-gray-600">Email: {post.user.email}</p>
+                                        <p className="text-gray-600">Phone: {post.user.phone}</p>
+                                        <p className="text-gray-600">Website: {post.user.website}</p>
+                                    </div>
+                                )}
+                            </div>
                         </div>
                     </li>
                 ))}
             </ul>
         </div>
-
 
     );
 };
