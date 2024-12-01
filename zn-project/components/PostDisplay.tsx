@@ -99,9 +99,10 @@ const PostDisplay: React.FC<PostDisplayProps> = ({ searchQuery, selectedUserId }
 
     }, [searchQuery, selectedUserId, posts]); // Re-run the filter if changed
 
+    // Pagination calculations
     const indexOfLastPost = currentPage * postsPerPage;
     const indexOfFirstPost = indexOfLastPost - postsPerPage;
-    const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+    const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost); // Only slice filteredPosts for pagination
 
     // Pagination button handlers
     const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
@@ -119,7 +120,7 @@ const PostDisplay: React.FC<PostDisplayProps> = ({ searchQuery, selectedUserId }
             ) : (
                 <div>
                     <ul className="space-y-6">
-                        {filteredPosts.map((post) => (
+                        {currentPosts.map((post) => (  // Use currentPosts for pagination
                             <li key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden transition-shadow duration-300 hover:shadow-xl">
                                 <div className="flex items-center space-x-6 p-4">
                                     {post.image && (
