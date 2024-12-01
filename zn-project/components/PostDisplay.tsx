@@ -80,6 +80,9 @@ const PostDisplay: React.FC<PostDisplayProps> = ({ searchQuery, selectedUserId }
     }, []);
 
     useEffect(() => {
+        // Reset to page 1 when filter changes
+        setCurrentPage(1);
+
         // Filter posts based on query & user
         let filtered = posts;
 
