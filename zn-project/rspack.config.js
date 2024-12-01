@@ -30,6 +30,18 @@ module.exports = {
                 test: /\.svg$/, // Match SVG files
                 type: 'asset', // Use Rspack's asset module
             },
+            {
+                test: /\.(png|jpg|jpeg|gif|svg)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[hash].[ext]',
+                            outputPath: 'images/',
+                        },
+                    },
+                ],
+            },
     ],
 },
     resolve: {

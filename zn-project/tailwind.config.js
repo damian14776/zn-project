@@ -6,7 +6,11 @@ module.exports = {
     './public/index.html',
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'zngly-green': '#03AD51', // Replace with the hex color you find
+      },
+    },
   },
   plugins: [],
 }
