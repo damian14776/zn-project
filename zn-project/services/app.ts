@@ -11,3 +11,13 @@ export const fetchPosts = async () => {
         return [];
     }
 }
+
+// GET Images
+export const fetchPhotos = async () => {
+    try {
+        const response = await axios.get(`${API_URL}/photos`);
+        return response.data;
+    } catch (err) {
+        throw new Error('Failed to get Images');
+    }
+}
